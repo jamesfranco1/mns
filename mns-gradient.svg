@@ -1,0 +1,20 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mnsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff4747"/>
+      <stop offset="30%" style="stop-color:#ff6b6b"/>
+      <stop offset="50%" style="stop-color:#e85555"/>
+      <stop offset="70%" style="stop-color:#b86464"/>
+      <stop offset="100%" style="stop-color:#7a8888"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" fill="#0a0a0b"/>
+  <text x="400" y="145" 
+        font-family="Arial Black, Impact, sans-serif" 
+        font-size="140" 
+        font-weight="900"
+        letter-spacing="15"
+        fill="url(#mnsGradient)" 
+        text-anchor="middle">MNS</text>
+</svg>
+

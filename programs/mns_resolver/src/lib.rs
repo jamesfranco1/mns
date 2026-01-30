@@ -215,3 +215,4 @@ pub struct MoltbookAgentUpdated {
     pub agent_id: String,
 }
 
+
