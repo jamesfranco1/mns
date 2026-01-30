@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MNS - Molt Name Service</title>
+    <link rel="icon" type="image/png" href="mnsimg.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -150,6 +151,15 @@
             font-size: 2rem;
             color: var(--red-primary);
             letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
         }
 
         .nav-right {
@@ -997,7 +1007,10 @@
     <div class="bg-glow"></div>
 
     <nav>
-        <div class="logo">MNS</div>
+        <div class="logo">
+            <img src="mnsimg.png" alt="MNS" class="logo-img">
+            MNS
+        </div>
         <div class="nav-right">
             <div class="nav-links">
                 <a href="https://github.com/jamesfranco1/mns" target="_blank">
