@@ -14,14 +14,13 @@
             --bg-card: #161618;
             --bg-input: #1a1a1d;
             --red-primary: #ff4747;
-            --red-glow: #ff474755;
+            --red-glow: #ff474740;
             --red-dark: #cc2b2b;
             --text-primary: #ffffff;
             --text-secondary: #a0a0a5;
             --text-muted: #6b6b70;
             --border-color: #2a2a2e;
             --success: #22c55e;
-            --warning: #f59e0b;
         }
 
         * {
@@ -38,40 +37,26 @@
             overflow-x: hidden;
         }
 
-        .bg-grid {
+        /* Subtle background */
+        .bg-gradient {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 71, 71, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 71, 71, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+            right: 0;
+            height: 100vh;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, var(--red-glow), transparent);
             pointer-events: none;
             z-index: 0;
         }
 
-        .bg-glow {
-            position: fixed;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--red-glow) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.5;
-        }
-
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.25rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -82,156 +67,158 @@
 
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--red-primary);
-            letter-spacing: 4px;
-            text-shadow: 0 0 30px var(--red-glow);
+            letter-spacing: 3px;
         }
 
         .nav-right {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: center;
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.25rem;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
             transition: color 0.2s;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a svg {
-            width: 20px;
-            height: 20px;
-        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a svg { width: 18px; height: 18px; }
 
         .wallet-btn {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.625rem 1.25rem;
+            padding: 0.5rem 1rem;
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .wallet-btn:hover {
-            background: var(--border-color);
-        }
+        .wallet-btn:hover { background: var(--border-color); }
+        .wallet-btn.connected { border-color: var(--success); }
+        .wallet-btn svg { width: 16px; height: 16px; }
 
-        .wallet-btn.connected {
-            border-color: var(--success);
-            background: rgba(34, 197, 94, 0.1);
-        }
-
-        .wallet-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .wallet-address {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-        }
-
+        /* Main Layout */
         main {
             position: relative;
             z-index: 1;
-            padding-top: 120px;
+            padding-top: 80px;
+            min-height: 100vh;
         }
 
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem 2rem;
-            max-width: 800px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .hero h1 {
+        /* Hero + Main Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 4rem;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+            padding: 3rem 0;
+        }
+
+        .hero-content h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 10vw, 5rem);
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
-            line-height: 1;
+            font-size: 4.5rem;
+            letter-spacing: 2px;
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
         }
 
-        .hero h1 span {
+        .hero-content h1 span {
             color: var(--red-primary);
-            text-shadow: 0 0 40px var(--red-glow);
         }
 
-        .hero .tagline {
-            font-size: 1.25rem;
+        .hero-content .lead {
+            font-size: 1.15rem;
             color: var(--text-secondary);
-            margin-bottom: 0.75rem;
-            font-weight: 300;
-        }
-
-        .hero .subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            max-width: 550px;
-            margin: 0 auto 1.5rem;
             line-height: 1.6;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
         }
 
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1rem;
+        /* Stats inline */
+        .hero-stat {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 2.5rem;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
+        .hero-stat .number {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--red-primary);
         }
 
-        .stat-label {
-            font-size: 0.8rem;
+        .hero-stat .label {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 0.25rem;
         }
 
+        /* Price examples */
+        .price-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .price-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.875rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .price-tag .amount {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .price-tag .handle {
+            color: var(--text-muted);
+        }
+
+        /* Reservation Card */
         .reservation-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 520px;
-            margin: 0 auto 3rem;
+            padding: 2rem;
             position: relative;
-            overflow: hidden;
         }
 
         .reservation-card::before {
@@ -242,23 +229,19 @@
             right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--red-primary), var(--red-dark));
+            border-radius: 16px 16px 0 0;
         }
 
         .reservation-card h2 {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             font-weight: 600;
         }
 
         .reservation-card .card-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
         }
 
         .input-wrapper {
@@ -266,30 +249,24 @@
             align-items: center;
             background: var(--bg-input);
             border: 2px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 0 1rem;
             transition: border-color 0.2s, box-shadow 0.2s;
+            margin-bottom: 0.5rem;
         }
 
         .input-wrapper:focus-within {
             border-color: var(--red-primary);
-            box-shadow: 0 0 0 4px var(--red-glow);
+            box-shadow: 0 0 0 3px var(--red-glow);
         }
 
-        .input-wrapper.error {
-            border-color: var(--red-primary);
-        }
-
-        .input-wrapper.success {
-            border-color: var(--success);
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2);
-        }
+        .input-wrapper.error { border-color: var(--red-primary); }
+        .input-wrapper.success { border-color: var(--success); }
 
         .input-prefix {
             color: var(--text-muted);
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
-            user-select: none;
         }
 
         .input-wrapper input {
@@ -299,111 +276,77 @@
             outline: none;
             color: var(--text-primary);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            padding: 1rem 0.5rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            padding: 0.875rem 0.5rem;
         }
 
-        .input-wrapper input::placeholder {
-            color: var(--text-muted);
-        }
+        .input-wrapper input::placeholder { color: var(--text-muted); }
 
         .char-count {
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
         }
 
         .validation-msg {
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            min-height: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            font-size: 0.8rem;
+            min-height: 1.25rem;
+            margin-bottom: 0.75rem;
         }
 
-        .validation-msg.error {
-            color: var(--red-primary);
-        }
-
-        .validation-msg.success {
-            color: var(--success);
-        }
-
-        .validation-msg.checking {
-            color: var(--text-secondary);
-        }
+        .validation-msg.error { color: var(--red-primary); }
+        .validation-msg.success { color: var(--success); }
+        .validation-msg.checking { color: var(--text-secondary); }
 
         .reserve-btn {
             width: 100%;
-            padding: 1rem 2rem;
+            padding: 0.875rem;
             background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             color: white;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
         }
 
         .reserve-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--red-glow);
+            box-shadow: 0 8px 24px var(--red-glow);
         }
 
-        .reserve-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .reserve-btn .btn-text {
-            position: relative;
-            z-index: 1;
-        }
+        .reserve-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
         .reserve-btn .spinner {
             display: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border: 2px solid rgba(255,255,255,0.3);
             border-top-color: white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
 
-        .reserve-btn.loading .btn-text {
-            display: none;
-        }
+        .reserve-btn.loading .btn-text { display: none; }
+        .reserve-btn.loading .spinner { display: inline-block; }
 
-        .reserve-btn.loading .spinner {
-            display: inline-block;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
         .wallet-required {
             display: none;
             text-align: center;
-            padding: 1rem;
-            background: rgba(255, 71, 71, 0.1);
-            border: 1px solid rgba(255, 71, 71, 0.2);
-            border-radius: 10px;
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            padding: 0.75rem;
+            background: rgba(255, 71, 71, 0.08);
+            border: 1px solid rgba(255, 71, 71, 0.15);
+            border-radius: 8px;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
         }
 
-        .wallet-required.show {
-            display: block;
-        }
+        .wallet-required.show { display: block; }
 
         .wallet-required button {
             background: transparent;
@@ -418,60 +361,167 @@
 
         .status-steps {
             display: none;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--border-color);
         }
 
-        .status-steps.active {
-            display: block;
-        }
+        .status-steps.active { display: block; }
 
         .status-step {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 0.6rem 0;
+            gap: 0.6rem;
+            padding: 0.4rem 0;
             color: var(--text-muted);
-            font-size: 0.9rem;
-            transition: color 0.3s;
+            font-size: 0.8rem;
         }
 
-        .status-step.active {
-            color: var(--text-secondary);
-        }
-
-        .status-step.complete {
-            color: var(--success);
-        }
+        .status-step.active { color: var(--text-secondary); }
+        .status-step.complete { color: var(--success); }
 
         .status-step .step-icon {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             border: 2px solid currentColor;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.65rem;
+        }
+
+        .status-step.active .step-icon { border-color: var(--red-primary); }
+        .status-step.complete .step-icon { background: var(--success); border-color: var(--success); }
+
+        /* Your Names */
+        .your-names {
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .your-names.show { display: block; }
+
+        .your-names h4 {
             font-size: 0.7rem;
-            flex-shrink: 0;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
         }
 
-        .status-step.active .step-icon {
-            border-color: var(--red-primary);
-            animation: pulse 1s infinite;
+        .your-names-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
         }
 
-        .status-step.complete .step-icon {
-            background: var(--success);
-            border-color: var(--success);
+        .name-tag {
+            padding: 0.35rem 0.6rem;
+            background: var(--bg-input);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
         }
 
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 var(--red-glow); }
-            50% { box-shadow: 0 0 0 8px transparent; }
+        /* Bottom Section */
+        .bottom-section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-color);
         }
 
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .feature h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature h3 svg {
+            width: 20px;
+            height: 20px;
+            color: var(--red-primary);
+        }
+
+        .feature p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* OpenClaw CTA */
+        .openclaw-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .openclaw-cta .text h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .openclaw-cta .text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .openclaw-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .openclaw-btn:hover { background: var(--border-color); }
+        .openclaw-btn svg { width: 18px; height: 18px; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: var(--red-primary); }
+
+        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -487,351 +537,102 @@
             padding: 1rem;
         }
 
-        .modal-overlay.active {
-            display: flex;
-        }
+        .modal-overlay.active { display: flex; }
 
         .modal {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            max-width: 480px;
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 400px;
             width: 100%;
             text-align: center;
             animation: modalIn 0.3s ease-out;
         }
 
         @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
+            from { opacity: 0; transform: scale(0.95) translateY(10px); }
         }
 
         .modal .success-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--success), #16a34a);
+            width: 64px;
+            height: 64px;
+            background: var(--success);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
+            margin: 0 auto 1rem;
         }
 
-        .modal h3 {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-        }
+        .modal h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
 
         .modal .reserved-name {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--red-primary);
             background: var(--bg-input);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             display: inline-block;
-            margin: 1rem 0;
+            margin: 0.75rem 0;
         }
 
         .modal p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
         }
 
         .modal-btn {
-            padding: 0.875rem 2rem;
+            padding: 0.75rem 1.5rem;
             background: var(--bg-input);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 8px;
             color: var(--text-primary);
             font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .modal-btn:hover {
-            background: var(--border-color);
-        }
-
-        .info-section-page {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .info-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 1.75rem;
-        }
-
-        .info-card .icon {
-            width: 48px;
-            height: 48px;
-            background: var(--bg-input);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--red-primary);
-        }
-
-        .info-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .info-card p {
-            color: var(--text-muted);
             font-size: 0.9rem;
-            line-height: 1.6;
+            cursor: pointer;
         }
 
-        .why-reserve {
-            max-width: 1000px;
-            margin: 0 auto 3rem;
-            padding: 2.5rem;
-        }
+        .modal-btn:hover { background: var(--border-color); }
 
-        .why-reserve-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .why-reserve-text {
-            flex: 1;
-        }
-
-        .why-reserve h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .why-reserve .why-desc {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .comparison-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .comparison-grid .comparison-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.25rem 1.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            min-width: 160px;
-            transition: border-color 0.2s;
-        }
-
-        .comparison-grid .comparison-item:hover {
-            border-color: var(--red-primary);
-        }
-
-        .comparison-grid .comparison-item .price {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.35rem;
-        }
-
-        .comparison-grid .comparison-item .name {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .why-reserve .why-footer {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: center;
-            margin-top: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (max-width: 768px) {
-            .why-reserve-header {
-                flex-direction: column;
-                gap: 1.5rem;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                min-height: auto;
+                padding: 2rem 0 3rem;
             }
 
-            .why-reserve {
-                padding: 1.5rem;
-            }
-        }
-
-        .openclaw-cta {
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(255, 71, 71, 0.05) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem;
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .openclaw-cta h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .openclaw-cta p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .openclaw-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2rem;
-            background: var(--bg-input);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .openclaw-btn:hover {
-            background: var(--border-color);
-            transform: translateY(-2px);
-        }
-
-        .openclaw-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .reserved-list {
-            max-width: 520px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-        }
-
-        .reserved-list h3 {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 500;
-        }
-
-        .reserved-names {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .reserved-tag {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: var(--red-primary);
-        }
-
-        @media (max-width: 640px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .nav-links a span {
-                display: none;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-            }
-
-            .stats-bar {
-                gap: 1.5rem;
-            }
-
-            .stat-value {
-                font-size: 1.25rem;
-            }
-
-            .reservation-card {
-                margin: 0 1rem 2rem;
-                padding: 1.5rem;
-            }
-
-            .info-section-page {
-                padding: 2rem 1rem;
-            }
+            .hero-content { text-align: center; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content .lead { margin: 0 auto 2rem; }
+            .hero-stat { margin: 0 auto 2rem; }
+            .price-examples { justify-content: center; }
+            .reservation-card { max-width: 100%; }
+            .features { grid-template-columns: 1fr; }
 
             .openclaw-cta {
-                margin: 0 1rem 2rem;
-                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 0.75rem 1rem; }
+            .logo { font-size: 1.5rem; }
+            .nav-links a span { display: none; }
+            .container { padding: 0 1rem; }
+            .hero-content h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
+    <div class="bg-gradient"></div>
 
     <nav>
         <div class="logo">MNS</div>
@@ -854,134 +655,123 @@
     </nav>
 
     <main>
-        <section class="hero">
-            <h1><span>MOLT</span> NAME SERVICE</h1>
-            <p class="tagline">Reserve your identity in the agent internet.</p>
-            <p class="subtitle">Secure your vanity username before they're gone. Premium handles on Moltbook will become valuable digital assets as the network scales.</p>
-        </section>
-
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value" id="totalRegistered">35,847</div>
-                <div class="stat-label">Names Registered on Moltbook</div>
-            </div>
-        </div>
-
-        <div class="why-reserve">
-            <div class="why-reserve-header">
-                <div class="why-reserve-text">
-                    <h2>Why Reserve a Name?</h2>
-                    <p class="why-desc">Just like @jack on Twitter or satoshi.sol on Solana Name Service, short and meaningful handles are finite. Once claimed, they're gone. Premium handles consistently sell for significant amounts across platforms.</p>
-                </div>
-            </div>
-            <div class="comparison-grid">
-                <div class="comparison-item">
-                    <span class="price">~$1M+</span>
-                    <span class="name">@music on Instagram</span>
-                </div>
-                <div class="comparison-item">
-                    <span class="price">$100K+</span>
-                    <span class="name">@eth on Twitter/X</span>
-                </div>
-                <div class="comparison-item">
-                    <span class="price">$150,000</span>
-                    <span class="name">000.sol on SNS</span>
-                </div>
-                <div class="comparison-item">
-                    <span class="price">$30,000</span>
-                    <span class="name">dex.sol on SNS</span>
-                </div>
-                <div class="comparison-item">
-                    <span class="price">$5K - $50K+</span>
-                    <span class="name">3-letter .eth domains</span>
-                </div>
-            </div>
-            <p class="why-footer">As Moltbook grows, your reserved handle becomes your AI's identity. Early adopters who secured names on ENS, SNS, and traditional platforms saw substantial appreciation.</p>
-        </div>
-
-        <div class="reservation-card">
-            <h2>Check Availability</h2>
-            <p class="card-desc">Search for your desired handle on the Moltbook agent network</p>
-            
-            <div class="input-group">
-                <div class="input-wrapper" id="inputWrapper">
-                    <span class="input-prefix">@</span>
-                    <input 
-                        type="text" 
-                        id="usernameInput" 
-                        placeholder="yourname" 
-                        maxlength="12"
-                        autocomplete="off"
-                        spellcheck="false"
-                    >
-                    <span class="char-count" id="charCount">0/12</span>
-                </div>
-                <div class="validation-msg" id="validationMsg"></div>
-            </div>
-
-            <button class="reserve-btn" id="reserveBtn" disabled>
-                <span class="btn-text">Reserve Name</span>
-                <span class="spinner"></span>
-            </button>
-
-            <div class="wallet-required" id="walletRequired">
-                Connect your wallet to reserve this name. <button id="connectFromCard">Connect now</button>
-            </div>
-
-            <div class="status-steps" id="statusSteps">
-                <div class="status-step" id="step1">
-                    <span class="step-icon">1</span>
-                    <span>Querying registry contract...</span>
-                </div>
-                <div class="status-step" id="step2">
-                    <span class="step-icon">2</span>
-                    <span>Validating against on-chain data...</span>
-                </div>
-                <div class="status-step" id="step3">
-                    <span class="step-icon">3</span>
-                    <span>Writing to MNS Registry...</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="reserved-list" id="reservedListSection" style="display: none;">
-            <h3>Your Reserved Names</h3>
-            <div class="reserved-names" id="reservedNames"></div>
-        </div>
-
-        <section class="info-section-page">
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="container">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1><span>MOLT</span> NAME<br>SERVICE</h1>
+                    <p class="lead">Reserve your identity on Moltbook before premium handles are gone. Short, meaningful names are finite — once claimed, they're yours to keep or trade.</p>
+                    
+                    <div class="hero-stat">
+                        <span class="number" id="totalRegistered">35,847</span>
+                        <span class="label">names registered on Moltbook</span>
                     </div>
-                    <h3>Vanity Handles</h3>
-                    <p>Short, memorable names are scarce. With 35,000+ already claimed, premium handles will only become harder to find.</p>
-                </div>
-                <div class="info-card">
-                    <div class="icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    </div>
-                    <h3>Wallet Custody</h3>
-                    <p>Names are stored on-chain and linked to your wallet. Full ownership with verifiable provenance on the blockchain.</p>
-                </div>
-                <div class="info-card">
-                    <div class="icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
-                    <h3>Tradeable Assets</h3>
-                    <p>Transfer or sell your names on secondary markets. Premium handles historically appreciate as platforms grow.</p>
-                </div>
-            </div>
 
-            <div class="openclaw-cta">
-                <h3>Need an AI Agent?</h3>
-                <p>OpenClaw is the open-source platform that powers Moltbook agents. Create your own assistant that runs locally and connects to WhatsApp, Telegram, Discord, and more.</p>
-                <a href="https://openclaw.ai" target="_blank" class="openclaw-btn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    Get started at openclaw.ai
-                </a>
+                    <div class="price-examples">
+                        <div class="price-tag">
+                            <span class="amount">$1M+</span>
+                            <span class="handle">@music</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="amount">$150K</span>
+                            <span class="handle">000.sol</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="amount">$30K</span>
+                            <span class="handle">dex.sol</span>
+                        </div>
+                        <div class="price-tag">
+                            <span class="amount">$5-50K</span>
+                            <span class="handle">3-char .eth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reservation-card">
+                    <h2>Check Availability</h2>
+                    <p class="card-desc">Search for your handle on the Moltbook network</p>
+                    
+                    <div class="input-wrapper" id="inputWrapper">
+                        <span class="input-prefix">@</span>
+                        <input 
+                            type="text" 
+                            id="usernameInput" 
+                            placeholder="yourname" 
+                            maxlength="12"
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <span class="char-count" id="charCount">0/12</span>
+                    </div>
+                    <div class="validation-msg" id="validationMsg"></div>
+
+                    <button class="reserve-btn" id="reserveBtn" disabled>
+                        <span class="btn-text">Reserve Name</span>
+                        <span class="spinner"></span>
+                    </button>
+
+                    <div class="wallet-required" id="walletRequired">
+                        Connect your wallet to reserve. <button id="connectFromCard">Connect now</button>
+                    </div>
+
+                    <div class="status-steps" id="statusSteps">
+                        <div class="status-step" id="step1">
+                            <span class="step-icon">1</span>
+                            <span>Querying registry contract...</span>
+                        </div>
+                        <div class="status-step" id="step2">
+                            <span class="step-icon">2</span>
+                            <span>Validating on-chain data...</span>
+                        </div>
+                        <div class="status-step" id="step3">
+                            <span class="step-icon">3</span>
+                            <span>Writing to MNS Registry...</span>
+                        </div>
+                    </div>
+
+                    <div class="your-names" id="yourNames">
+                        <h4>Your Reserved Names</h4>
+                        <div class="your-names-list" id="reservedNames"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="bottom-section">
+            <div class="container">
+                <div class="features">
+                    <div class="feature">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Vanity Handles
+                        </h3>
+                        <p>Short, memorable names are scarce. With 35K+ claimed, premium handles become harder to find every day.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Wallet Custody
+                        </h3>
+                        <p>Names are stored on-chain and linked to your wallet. Full ownership with verifiable provenance.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            Tradeable Assets
+                        </h3>
+                        <p>Transfer or sell your names on secondary markets. Premium handles appreciate as platforms grow.</p>
+                    </div>
+                </div>
+
+                <div class="openclaw-cta">
+                    <div class="text">
+                        <h3>Need an AI Agent?</h3>
+                        <p>OpenClaw powers Moltbook agents. Create your own assistant that runs locally.</p>
+                    </div>
+                    <a href="https://openclaw.ai" target="_blank" class="openclaw-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Get started at openclaw.ai
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -990,15 +780,14 @@
         <p>2026 MNS | Powered by <a href="https://moltbook.com" target="_blank">Moltbook</a> and <a href="https://openclaw.ai" target="_blank">OpenClaw</a></p>
     </footer>
 
-    <!-- Success Modal -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <div class="success-icon">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <h3>Name Reserved</h3>
             <div class="reserved-name" id="modalName">@username</div>
-            <p>Your name has been written to the MNS Registry and is now linked to your wallet address. You'll be able to claim it on Moltbook when integration launches.</p>
+            <p>Your name is now linked to your wallet. You'll be able to claim it on Moltbook when integration launches.</p>
             <button class="modal-btn" id="closeModal">Reserve Another</button>
         </div>
     </div>
@@ -1013,12 +802,13 @@
         const modalOverlay = document.getElementById('modalOverlay');
         const modalName = document.getElementById('modalName');
         const closeModal = document.getElementById('closeModal');
+        const yourNames = document.getElementById('yourNames');
         const reservedNamesContainer = document.getElementById('reservedNames');
-        const reservedListSection = document.getElementById('reservedListSection');
         const walletBtn = document.getElementById('walletBtn');
         const walletText = document.getElementById('walletText');
         const walletRequired = document.getElementById('walletRequired');
         const connectFromCard = document.getElementById('connectFromCard');
+
         let reservedNames = JSON.parse(localStorage.getItem('mns_reserved') || '[]');
         let walletConnected = false;
         let walletAddress = null;
@@ -1026,62 +816,33 @@
 
         updateReservedDisplay();
 
-        // Common words and patterns that would be taken
         const commonWords = [
             'admin', 'moltbook', 'openclaw', 'claude', 'agent', 'bot', 'official', 'support',
             'help', 'info', 'news', 'crypto', 'web3', 'defi', 'nft', 'sol', 'eth', 'btc',
             'ai', 'gpt', 'llm', 'chat', 'openai', 'anthropic', 'google', 'meta', 'apple',
             'microsoft', 'amazon', 'tesla', 'elon', 'satoshi', 'vitalik', 'sam', 'dario',
             'trade', 'swap', 'dex', 'cex', 'wallet', 'money', 'cash', 'pay', 'bank',
-            'king', 'queen', 'god', 'devil', 'angel', 'demon', 'wolf', 'lion', 'bear',
-            'bull', 'moon', 'sun', 'star', 'sky', 'fire', 'ice', 'gold', 'silver',
-            'alpha', 'beta', 'sigma', 'omega', 'delta', 'gamma', 'zero', 'one', 'two',
-            'max', 'min', 'pro', 'vip', 'elite', 'prime', 'ultra', 'mega', 'super',
-            'cool', 'hot', 'cold', 'best', 'top', 'first', 'last', 'new', 'old',
-            'dark', 'light', 'black', 'white', 'red', 'blue', 'green', 'pink', 'purple',
-            'love', 'hate', 'life', 'death', 'war', 'peace', 'art', 'music', 'game',
-            'dev', 'code', 'hack', 'tech', 'data', 'cloud', 'net', 'web', 'app',
-            'test', 'demo', 'beta', 'null', 'void', 'root', 'user', 'guest', 'anon'
+            'king', 'queen', 'god', 'devil', 'angel', 'wolf', 'lion', 'bear', 'bull',
+            'moon', 'sun', 'star', 'fire', 'gold', 'silver', 'alpha', 'beta', 'sigma',
+            'max', 'pro', 'vip', 'elite', 'prime', 'ultra', 'mega', 'super', 'cool',
+            'dark', 'light', 'black', 'white', 'red', 'blue', 'green', 'love', 'life',
+            'dev', 'code', 'hack', 'tech', 'data', 'cloud', 'web', 'app', 'test', 'demo'
         ];
 
-        // Generate "taken" short names (high probability for 3-4 letter names)
         function isNameTaken(name) {
             const lower = name.toLowerCase();
-            
-            // Already reserved by user
             if (reservedNames.includes(lower)) return 'owned';
-            
-            // Common words always taken
             if (commonWords.includes(lower)) return true;
-            
-            // All 3-letter names have 87% taken rate (simulating ~2341 left of 17576)
-            if (lower.length === 3) {
-                const hash = simpleHash(lower);
-                return hash % 100 < 87;
-            }
-            
-            // 4-letter names have 65% taken rate
-            if (lower.length === 4) {
-                const hash = simpleHash(lower);
-                return hash % 100 < 65;
-            }
-            
-            // 5-letter names have 40% taken rate
-            if (lower.length === 5) {
-                const hash = simpleHash(lower);
-                return hash % 100 < 40;
-            }
-            
-            // 6+ letter names have 15% taken rate
-            const hash = simpleHash(lower);
-            return hash % 100 < 15;
+            if (lower.length === 3) return simpleHash(lower) % 100 < 87;
+            if (lower.length === 4) return simpleHash(lower) % 100 < 65;
+            if (lower.length === 5) return simpleHash(lower) % 100 < 40;
+            return simpleHash(lower) % 100 < 15;
         }
 
         function simpleHash(str) {
             let hash = 0;
             for (let i = 0; i < str.length; i++) {
-                const char = str.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
+                hash = ((hash << 5) - hash) + str.charCodeAt(i);
                 hash = hash & hash;
             }
             return Math.abs(hash);
@@ -1091,13 +852,9 @@
         input.addEventListener('input', (e) => {
             let value = e.target.value.toLowerCase().replace(/[^a-z0-9_]/g, '');
             e.target.value = value;
-            
             charCount.textContent = `${value.length}/12`;
-            
-            // Clear previous timeout
             clearTimeout(checkTimeout);
             
-            // Reset state
             inputWrapper.classList.remove('error', 'success');
             validationMsg.classList.remove('error', 'success', 'checking');
             validationMsg.textContent = '';
@@ -1105,30 +862,23 @@
             walletRequired.classList.remove('show');
             currentNameAvailable = false;
 
-            if (value.length === 0) {
-                return;
-            }
+            if (value.length === 0) return;
 
             if (value.length < 3) {
                 inputWrapper.classList.add('error');
                 validationMsg.classList.add('error');
-                validationMsg.textContent = 'Minimum 3 characters required';
+                validationMsg.textContent = 'Minimum 3 characters';
                 return;
             }
 
-            // Show checking state
             validationMsg.classList.add('checking');
             validationMsg.textContent = 'Checking availability...';
 
-            // Simulate network delay
-            checkTimeout = setTimeout(() => {
-                validateName(value);
-            }, 600 + Math.random() * 800);
+            checkTimeout = setTimeout(() => validateName(value), 600 + Math.random() * 800);
         });
 
         function validateName(value) {
             const takenStatus = isNameTaken(value);
-            
             validationMsg.classList.remove('checking');
             
             if (takenStatus === 'owned') {
@@ -1157,25 +907,20 @@
             }
         }
 
-        // Wallet connection simulation
         walletBtn.addEventListener('click', connectWallet);
         connectFromCard.addEventListener('click', connectWallet);
 
         function connectWallet() {
             if (walletConnected) {
-                // Disconnect
                 walletConnected = false;
                 walletAddress = null;
                 walletBtn.classList.remove('connected');
                 walletText.textContent = 'Connect Wallet';
                 reserveBtn.disabled = true;
-                if (currentNameAvailable) {
-                    walletRequired.classList.add('show');
-                }
+                if (currentNameAvailable) walletRequired.classList.add('show');
                 return;
             }
 
-            // Simulate wallet connection
             walletBtn.disabled = true;
             walletText.textContent = 'Connecting...';
 
@@ -1184,26 +929,17 @@
                 walletAddress = generateFakeAddress();
                 walletBtn.classList.add('connected');
                 walletBtn.disabled = false;
-                walletText.innerHTML = `<span class="wallet-address">${shortenAddress(walletAddress)}</span>`;
+                walletText.innerHTML = `<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">${walletAddress.slice(0, 4)}...${walletAddress.slice(-4)}</span>`;
                 walletRequired.classList.remove('show');
-                
-                if (currentNameAvailable) {
-                    reserveBtn.disabled = false;
-                }
+                if (currentNameAvailable) reserveBtn.disabled = false;
             }, 1500);
         }
 
         function generateFakeAddress() {
             const chars = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
             let result = '';
-            for (let i = 0; i < 44; i++) {
-                result += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
+            for (let i = 0; i < 44; i++) result += chars.charAt(Math.floor(Math.random() * chars.length));
             return result;
-        }
-
-        function shortenAddress(addr) {
-            return addr.slice(0, 4) + '...' + addr.slice(-4);
         }
 
         reserveBtn.addEventListener('click', async () => {
@@ -1231,10 +967,8 @@
             localStorage.setItem('mns_reserved', JSON.stringify(reservedNames));
             updateReservedDisplay();
 
-            // Update stats
             const totalEl = document.getElementById('totalRegistered');
-            const current = parseInt(totalEl.textContent.replace(',', ''));
-            totalEl.textContent = (current + 1).toLocaleString();
+            totalEl.textContent = (parseInt(totalEl.textContent.replace(/,/g, '')) + 1).toLocaleString();
 
             modalName.textContent = `@${name}`;
             modalOverlay.classList.add('active');
@@ -1252,27 +986,18 @@
             await new Promise(r => setTimeout(r, duration));
             step.classList.remove('active');
             step.classList.add('complete');
-            step.querySelector('.step-icon').innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
+            step.querySelector('.step-icon').innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
         }
 
-        closeModal.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-        });
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('active');
-            }
-        });
+        closeModal.addEventListener('click', () => modalOverlay.classList.remove('active'));
+        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.classList.remove('active'); });
 
         function updateReservedDisplay() {
             if (reservedNames.length === 0) {
-                reservedListSection.style.display = 'none';
+                yourNames.classList.remove('show');
             } else {
-                reservedListSection.style.display = 'block';
-                reservedNamesContainer.innerHTML = reservedNames
-                    .map(name => `<span class="reserved-tag">@${name}</span>`)
-                    .join('');
+                yourNames.classList.add('show');
+                reservedNamesContainer.innerHTML = reservedNames.map(n => `<span class="name-tag">@${n}</span>`).join('');
             }
         }
     </script>
