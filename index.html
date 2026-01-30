@@ -216,8 +216,8 @@
             grid-template-columns: 1fr 420px;
             gap: 4rem;
             align-items: center;
-            min-height: calc(100vh - 80px);
-            padding: 3rem 0;
+            min-height: calc(100vh - 200px);
+            padding: 2rem 0 3rem;
         }
 
         .hero-content h1 {
@@ -509,7 +509,7 @@
 
         /* Bottom Section */
         .bottom-section {
-            padding: 4rem 0;
+            padding: 3rem 0 4rem;
             border-top: 1px solid var(--border-color);
         }
 
@@ -645,78 +645,6 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             line-height: 1.4;
-        }
-
-        /* Recent Activity */
-        .recent-activity {
-            margin-bottom: 4rem;
-            overflow: hidden;
-        }
-
-        .recent-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .recent-header h3 {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .recent-header span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .activity-ticker {
-            display: flex;
-            gap: 1rem;
-            animation: ticker 30s linear infinite;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .activity-item .name {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--red-primary);
-            font-size: 0.9rem;
-        }
-
-        .activity-item .time {
-            font-size: 0.75rem;
-            color: var(--text-muted);
         }
 
         /* Moltbook Integration */
@@ -1172,37 +1100,6 @@
 
         <section class="bottom-section">
             <div class="container">
-                <!-- Recent Activity Ticker -->
-                <div class="recent-activity">
-                    <div class="recent-header">
-                        <h3><span class="live-dot"></span> Recent Registrations</h3>
-                        <span>Updated live</span>
-                    </div>
-                    <div class="activity-ticker" id="activityTicker">
-                        <div class="activity-item"><span class="name">@volt</span><span class="time">2m ago</span></div>
-                        <div class="activity-item"><span class="name">@nexus</span><span class="time">4m ago</span></div>
-                        <div class="activity-item"><span class="name">@phantom</span><span class="time">7m ago</span></div>
-                        <div class="activity-item"><span class="name">@cipher</span><span class="time">12m ago</span></div>
-                        <div class="activity-item"><span class="name">@nova</span><span class="time">15m ago</span></div>
-                        <div class="activity-item"><span class="name">@arc</span><span class="time">18m ago</span></div>
-                        <div class="activity-item"><span class="name">@flux</span><span class="time">23m ago</span></div>
-                        <div class="activity-item"><span class="name">@zenith</span><span class="time">31m ago</span></div>
-                        <div class="activity-item"><span class="name">@pulse</span><span class="time">38m ago</span></div>
-                        <div class="activity-item"><span class="name">@echo</span><span class="time">45m ago</span></div>
-                        <!-- Duplicate for seamless loop -->
-                        <div class="activity-item"><span class="name">@volt</span><span class="time">2m ago</span></div>
-                        <div class="activity-item"><span class="name">@nexus</span><span class="time">4m ago</span></div>
-                        <div class="activity-item"><span class="name">@phantom</span><span class="time">7m ago</span></div>
-                        <div class="activity-item"><span class="name">@cipher</span><span class="time">12m ago</span></div>
-                        <div class="activity-item"><span class="name">@nova</span><span class="time">15m ago</span></div>
-                        <div class="activity-item"><span class="name">@arc</span><span class="time">18m ago</span></div>
-                        <div class="activity-item"><span class="name">@flux</span><span class="time">23m ago</span></div>
-                        <div class="activity-item"><span class="name">@zenith</span><span class="time">31m ago</span></div>
-                        <div class="activity-item"><span class="name">@pulse</span><span class="time">38m ago</span></div>
-                        <div class="activity-item"><span class="name">@echo</span><span class="time">45m ago</span></div>
-                    </div>
-                </div>
-
                 <!-- How It Works -->
                 <div class="how-it-works">
                     <h2>How It Works</h2>
